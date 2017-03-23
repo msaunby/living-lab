@@ -21,8 +21,9 @@ void loop() {
     // look for the newline. That's the end of your
     // sentence:
     if (Serial.read() == '\n') {
+      Serial.print(servo_num); Serial.print(':'); Serial.println(angle);
       if(angle < 0) angle = 0;
-      if(angle > 180) angle = 180;
+      if(angle > 179) angle = 179;
       servos[ servo_num ].write( angle );
       delay(15);                       // waits 15ms for the servo to reach the position
     }
